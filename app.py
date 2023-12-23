@@ -54,4 +54,46 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5002)
+
+
+
+
+
+
+
+
+
+
+
+# import requests
+
+
+# def get_attendance(id, month, year):
+#     headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'}
+#     payload = {'company_token': 'II@tNfQ70O'}
+#     response = requests.get(f"https://superteclabs.com/apis2/AttendanceRecord.php?id={id}&month={month}&year={year}", headers=headers, data=payload)
+#     id_ty = type(id)    
+#     print(id_ty)
+#     return response.text
+
+# abc = get_attendance(217, 'September', 2023)
+# print(abc)
+
+
+
+# def get_detail():
+#             import requests
+#             headers = { 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0' }
+#             payload = {'company_token': 'II@tNfQ70O'}
+#             response = requests.post("https://superteclabs.com/apis2/retrieveallusers.php", data=payload,headers=headers)
+#             return response.text
+        
+#         def get_attendance(id,month,year):
+#             import requests
+#             headers = { 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0' }
+#             payload = {'company_token': 'II@tNfQ70O'}
+#             response = requests.get(f"https://superteclabs.com/apis2/AttendanceRecord.php?id={id}&month={month}&year={year}",headers=headers , data=payload )
+#             return response.json()
+        
+ 

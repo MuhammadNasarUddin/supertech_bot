@@ -38,7 +38,7 @@
     {% for message in messages %}
         {% if message.type == 'user' %}
             <p name="question-text" class="w-3/4 ml-auto my-4 py-2 px-4 rounded-md text-sm bg-gray-400 text-white">
-                You: {{ message.content }}
+                {{ message.content }}
             </p>
         {% else %}
             <p name="answer-text" style="background-color:#0088cc;" class="w-3/4 mr-auto my-4 py-2 px-4 rounded-md text-sm bg-blue-500 text-white">
@@ -65,40 +65,7 @@
   </div>
   <script>
 
-  window.addEventListener("load", () => {
-    document.getElementById("first-name").focus();
-
-    document.getElementById("prompts-wrapper").lastElementChild.scrollIntoView({ behavior: "smooth" });
-  });
-
-  const delete_thread = async (event) => {
-    const thread_id = event.currentTarget.dataset.threadId;
-    event.currentTarget.querySelector("svg").classList.add("animate-spin");
-    const res = await fetch("/delete_thread.php?thread_id=" + thread_id);
-
-    if (res.status === 500) {
-      window.alert("Sorry for the inconvenience, an error occurred.");
-    } else if (res.status === 200) {
-      location.reload();
-    }
-  };
-
-  document.getElementById("thread-btn").addEventListener("click", async (event) => {
-    event.currentTarget.setAttribute("disabled", "");
-    event.currentTarget.children[0].classList.remove("hidden");
-    event.currentTarget.children[1].textContent = "creating...";
-    const res = await fetch("/create_thread.php");
-
-    if (res.status === 500) {
-      window.alert("Sorry for the inconvenience, an error occurred.");
-    } else if (res.status === 200) {
-      location.replace("/");
-    }
-    event.currentTarget.removeAttribute("disabled");
-    event.currentTarget.children[0].classList.add("hidden");
-    event.currentTarget.children[1].textContent = "Create a new Thread";
-  });
-
+  
   document.querySelector("form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -116,7 +83,6 @@
     submitBtn.children[1].textContent = "processing...";
     event.srcElement[0].value = "";
 
-    const res = await fetch("/handle_request.php?query=" + question + "&thread_id=<?= $requested_thread_id ?>");
 
     if (res.status === 500) {
       window.alert("Sorry for the inconvenience, an error occurred.");
